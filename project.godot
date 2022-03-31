@@ -1,0 +1,68 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "InstantGamesBridgeAdvertisement",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/advertisement.gd"
+}, {
+"base": "Reference",
+"class": "InstantGamesBridgeGame",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/game.gd"
+}, {
+"base": "Reference",
+"class": "InstantGamesBridgePlatform",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/platform.gd"
+}, {
+"base": "Reference",
+"class": "InterstitialState",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/interstitial_state.gd"
+}, {
+"base": "Reference",
+"class": "RewardState",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/reward_state.gd"
+} ]
+_global_script_class_icons={
+"InstantGamesBridgeAdvertisement": "",
+"InstantGamesBridgeGame": "",
+"InstantGamesBridgePlatform": "",
+"InterstitialState": "",
+"RewardState": ""
+}
+
+[application]
+
+config/name="Instant Games Bridge Plugin"
+run/main_scene="res://example/example.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+InstantGamesBridge="*res://addons/instant_games_bridge/singleton.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/instant_games_bridge/plugin.cfg" )
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
