@@ -59,18 +59,21 @@ func _on_initialized(args) -> void:
 	emit_signal("initalized")
 
 
-func initialize() -> void:
+func initialize(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> bool:
 	if OS.has_feature("JavaScript"):
 		if _check_sdk():
 			if isInitialized:
-				print("Already Initialized")
-				return
+				_check_sdk()
+				return false
 			
 			_instant_games_bridge_interface.initialize() \
-			.then(_initialized_cb) \
-			.catch(_printerr_cb)
+			.then(_initialized_cb if callback == null else callback) \
+			.catch(_printerr_cb if catch_callback == null else catch_callback)
+
+			return true
 	else:
 		pass
 #		printerr("Can't initialize SDK. (Not HTML5?)")
+	return false
 
 
