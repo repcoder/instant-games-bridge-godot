@@ -73,20 +73,19 @@ func _saved(args) -> void:
 func _check_advertisement() -> void:
 	_adv = InstantGamesBridge.advertisement
 
-	_adv.connect("interstitial_state_changed", self, "_adv_changed")
-	_adv.connect("rewarded_state_changed", self, "_rew_changed")
-	
+	_adv.connect("interstitial_state_changed", self, "_interstitial_state_changed")
+	_adv.connect("rewarded_state_changed", self, "_rewarded_state_changed")
 	_adv.show_interstitial(true)
 
 
-func _adv_changed(state: String):
+func _interstitial_state_changed(state: String):
 	logger("New Inter State: " + state)
 	
 	if state == InterstitialState.CLOSED:
 		_adv.show_rewarded()
 
 
-func _rew_changed(state: String):
+func _rewarded_state_changed(state: String):
 	logger("New Reward State: " + state)
 	
 	if state == RewardState.REWARDED:
