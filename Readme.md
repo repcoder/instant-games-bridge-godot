@@ -17,9 +17,15 @@ Initially, the plugin will not work, as it is necessary to add the SDK download 
 Now the plugin is fully functional.
 
 ## Usage
-If you don't know how to work with JavaScript in Godot, we strongly recommend reading at least one of [the reports on the Godot blog](https://godotengine.org/article/godot-web-progress-report-9).
++ [Setup](#setup)
++ [Platform](#platform)
++ [Advertisement](#advertisement)
++ [Game Data](#game-data)
 
-The main functions and methods of working with them are well shown in [example](addons/instant_games_bridge/example/example.gd).
+> **Warning!**
+> If you don't know how to work with JavaScript in Godot, we strongly recommend reading at least one of [the reports on the Godot blog](https://godotengine.org/article/godot-web-progress-report-9).
+
+> The main functions and methods of working with them are well shown in [example](addons/instant_games_bridge/example/example.gd).
 
 ### Setup
 #### Via GDScript
@@ -32,12 +38,13 @@ if InstantGamesBridge.initialize():
     InstantGamesBridge.connect("initalized", self, "_initialized")
 else:
     # Can't initialized
-    return
+    pass
 
 # Or use callback
 
 if !InstantGamesBridge.initialize(_initialized_cb):
     # Already Initialized
+    pass
 ```
 ### Via HTML
 You can use the original documentation and supplement your template code to make it look something like this:
@@ -79,9 +86,11 @@ InstantGamesBridge.platform.payload # -> String
 
 ### Advertisement
 #### Methods
-* `set_minimum_delay_between_interstitial(seconds: int) -> void`
-* `show_interstitial(ignore_delay = false, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void`
-* `show_rewarded(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void`
+```gdscript
+set_minimum_delay_between_interstitial(seconds: int) -> void
+show_interstitial(ignore_delay = false, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void
+show_rewarded(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void
+```
 
 Example:
 ```gdscript
@@ -97,8 +106,10 @@ InstantGamesBridge.advertisement.show_interstitial(ignore_delay)
 InstantGamesBridge.advertisement.show_rewarded()
 ```
 #### Signals
-* `interstitial_state_changed(state: String)`
-* `rewarded_state_changed(state: String)`
+```gdscript
+interstitial_state_changed(state: String)
+rewarded_state_changed(state: String)
+```
 
 Example:
 ```gdscript
@@ -108,8 +119,10 @@ func _interstitial_state_changed(state: String) -> void:
     pass
 ```
 ### Game Data
-* `get_data(key: String, callback: JavaScriptObject, catch_callback: JavaScriptObject = null) -> void`
-* `set_data(key: String, value, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void`
+```gdscript
+get_data(key: String, callback: JavaScriptObject, catch_callback: JavaScriptObject = null) -> void
+set_data(key: String, value, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void
+```
 
 Example:
 ```gdscript
