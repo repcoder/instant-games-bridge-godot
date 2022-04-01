@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Instant Games Bridge Plugin"
-run/main_scene="res://example/example.tscn"
+run/main_scene="res://addons/instant_games_bridge/example/example.tscn"
 config/icon="res://icon.png"
 
 [autoload]
