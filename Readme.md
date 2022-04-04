@@ -11,7 +11,7 @@ When the plugin is activated (in Project Settings -> Plugins), a script will be 
 3. Setting up
 Initially, the plugin will not work, as it is necessary to add the SDK download script to our export template (Project -> Export.. -> Options -> Head Include):
 ```html
-<script src="https://cdn.jsdelivr.net/gh/mewtongames/instant-games-bridge@1.1.0/dist/instant-games-bridge.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/instant-games-bridge/instant-games-bridge@1.1.0/dist/instant-games-bridge.js"></script>
 ```
 4. Done!
 Now the plugin is fully functional.
@@ -49,7 +49,7 @@ if !InstantGamesBridge.initialize(_initialized_cb):
 ### Via HTML
 You can use the original documentation and supplement your template code to make it look something like this:
 ```html
-<script src="https://cdn.jsdelivr.net/gh/mewtongames/instant-games-bridge@1.1.0/dist/instant-games-bridge.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/instant-games-bridge/instant-games-bridge@1.1.0/dist/instant-games-bridge.js"></script>
 <script> 
     instantGamesBridge
         .initialize()
