@@ -9,24 +9,16 @@ func _init(interface: JavaScriptObject) -> void:
 
 var id: String setget , _id_getter
 func _id_getter() -> String:
-	if _interface != null:
-		return _interface.id
-	return "mock"
+	return _interface.id if _interface != null else "mock"
 
 var sdk: JavaScriptObject setget , _sdk_getter
 func _sdk_getter() -> JavaScriptObject:
-	if _interface != null:
-		return _interface.sdk
-	return null
+	return _interface.sdk if _interface != null else null
 
 var language: String setget , _language_getter
 func _language_getter() -> String:
-	if _interface != null:
-		return _interface.language
-	return "en"
+	return _interface.language if _interface != null else "en"
 
 var payload: String setget , _payload_getter
 func _payload_getter() -> String:
-	if _interface != null:
-		return _interface.payload
-	return ""
+	return _interface.payload if _interface != null else ""

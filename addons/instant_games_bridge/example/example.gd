@@ -10,19 +10,33 @@ var _game
 
 func _ready() -> void:
 	logger("Init SDK")
-
-	if InstantGamesBridge.initialize():
-		InstantGamesBridge.connect("initalized", self, "_initialized")
+	
+	# Init automaticly
+	if InstantGamesBridge.settings.initialize_automaticly:
+		logger("Initialize automaticly: true")
+		
+		# In case the sdk has not had time to initialize yet
+		while not InstantGamesBridge.is_initialized:
+			yield(get_tree(), "idle_frame")
+			
+		_initialized()
+		
 	else:
-		logger("Can't initialized")
-		return
-	
-	#or use callback
-	
-	logger("Try alternative init")
-	
-	if !InstantGamesBridge.initialize(_initialized_cb):
-		logger("Already Initialized")
+		# Init manual with signal
+		logger("Run manual init")
+		
+		if InstantGamesBridge.initialize():
+			InstantGamesBridge.connect("initalized", self, "_initialized")
+			return
+		else:
+			logger("Can't initialized")
+			return
+		
+		# Or use callback
+		logger("Try alternative init")
+		
+		if !InstantGamesBridge.initialize(_initialized_cb):
+			logger("Already Initialized")
 
 
 func _initialized() -> void:

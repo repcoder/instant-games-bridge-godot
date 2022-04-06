@@ -19,10 +19,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/instant_games_bridge/game.gd"
 }, {
+"base": "EditorExportPlugin",
+"class": "InstantGamesBridgeInjection",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/injection.gd"
+}, {
 "base": "Reference",
 "class": "InstantGamesBridgePlatform",
 "language": "GDScript",
 "path": "res://addons/instant_games_bridge/platform.gd"
+}, {
+"base": "Reference",
+"class": "InstantGamesBridgeSettings",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/settings.gd"
+}, {
+"base": "Reference",
+"class": "InstantGamesBridgeSocial",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/social.gd"
 }, {
 "base": "Reference",
 "class": "InterstitialState",
@@ -37,7 +52,10 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "InstantGamesBridgeAdvertisement": "",
 "InstantGamesBridgeGame": "",
+"InstantGamesBridgeInjection": "",
 "InstantGamesBridgePlatform": "",
+"InstantGamesBridgeSettings": "",
+"InstantGamesBridgeSocial": "",
 "InterstitialState": "",
 "RewardState": ""
 }
