@@ -20,8 +20,7 @@ Now the plugin is fully functional.
 + [Game Data](#game-data)
 + [Social](#social)
 
-> **Warning!**
-> If you don't know how to work with JavaScript in Godot, we strongly recommend reading at least one of [the reports on the Godot blog](https://godotengine.org/article/godot-web-progress-report-9).
+> :warning: **Warning!** If you don't know how to work with JavaScript in Godot, we strongly recommend reading at least one of [the reports on the Godot blog](https://godotengine.org/article/godot-web-progress-report-9).
 
 > The main functions and methods of working with them are well shown in [example](addons/instant_games_bridge/example/example.gd).
 
