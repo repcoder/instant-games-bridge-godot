@@ -2,6 +2,7 @@
 Plugin of [InstantGamesBridge](https://github.com/instant-games-bridge/instant-games-bridge) for Godot.
 
 Roadmap: https://trello.com/b/NjF29vTW.
+
 Join community: https://t.me/instant_games_bridge.
 
 ## Install
