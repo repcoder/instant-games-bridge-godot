@@ -8,6 +8,7 @@ var _interface: JavaScriptObject
 
 var _interstitial_state_changed_cb = JavaScript.create_callback(self, "_interstitial_state_changed")
 var _rewarded_state_changed_cb = JavaScript.create_callback(self, "_rewarded_state_changed")
+var _printerr_cb = JavaScript.create_callback(self, "printerr")
 
 
 func _init(interface: JavaScriptObject) -> void:
@@ -38,7 +39,7 @@ func show_interstitial(ignore_delay = false, callback: JavaScriptObject = null, 
 	options.ignoreDelay = ignore_delay
 	_interface.showInterstitial(options) \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)
 
 
 func show_rewarded(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
@@ -46,4 +47,4 @@ func show_rewarded(callback: JavaScriptObject = null, catch_callback: JavaScript
 	
 	_interface.showRewarded() \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)

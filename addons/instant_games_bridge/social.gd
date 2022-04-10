@@ -3,6 +3,8 @@ extends Reference
 
 var _interface: JavaScriptObject
 
+var _printerr_cb = JavaScript.create_callback(self, "printerr")
+
 
 func _init(interface: JavaScriptObject) -> void:
 	_interface = interface
@@ -25,7 +27,7 @@ func share(callback: JavaScriptObject = null, catch_callback: JavaScriptObject =
 	
 	_interface.share() \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)
 
 
 func join_community(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
@@ -33,7 +35,7 @@ func join_community(callback: JavaScriptObject = null, catch_callback: JavaScrip
 	
 	_interface.joinCommunity() \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)
 
 
 func invite_friends(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
@@ -41,4 +43,4 @@ func invite_friends(callback: JavaScriptObject = null, catch_callback: JavaScrip
 	
 	_interface.inviteFriends() \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)

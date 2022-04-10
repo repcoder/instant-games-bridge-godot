@@ -89,6 +89,6 @@ func initialize(callback: JavaScriptObject = null, catch_callback: JavaScriptObj
 func _generate_bridge_options() -> JavaScriptObject:
 	var options = JavaScript.create_object("Object")
 	options.platform = JavaScript.create_object("Object")
-	options.platform.vk = InstantGamesBridgeSettings.vk_group_id
+	options.platform.vk = ProjectSettings.get_setting("addons/instant_games_bridge/vk/group_id") if ProjectSettings.has_setting("addons/instant_games_bridge/vk/group_id") else 0
 	
 	return options

@@ -3,6 +3,8 @@ extends Reference
 
 var _interface: JavaScriptObject
 
+var _printerr_cb = JavaScript.create_callback(self, "printerr")
+
 
 func _init(interface: JavaScriptObject) -> void:
 	_interface = interface
@@ -13,7 +15,7 @@ func get_data(key: String, callback: JavaScriptObject, catch_callback: JavaScrip
 	
 	_interface.getData(key) \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)
 
 
 func set_data(key: String, value, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
@@ -21,4 +23,4 @@ func set_data(key: String, value, callback: JavaScriptObject = null, catch_callb
 	
 	_interface.setData(key, value) \
 		.then(callback) \
-		.catch(catch_callback if catch_callback != null else InstantGamesBridge._printerr_cb)
+		.catch(catch_callback if catch_callback != null else _printerr_cb)

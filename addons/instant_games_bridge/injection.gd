@@ -6,16 +6,20 @@ const LOCAL_PATH = """\n<script type="text/javascript" src="instant-games-bridge
 
 var _path = ""
 var _is_web = false
+var _injected = false
 
 func _export_begin(features: PoolStringArray, is_debug: bool, path: String, flags: int) -> void:
 	if Array(features).has("web"):
 		_is_web = true
 		_path = path
+		_injected = false
 
 
 func _export_end() -> void:
-	if not _is_web:
+	if not _is_web or _injected:
 		return
+	
+	_injected = true
 	
 	var includes = ""
 	
@@ -28,7 +32,6 @@ func _export_end() -> void:
 					script_path = CDN_PATH
 				else:
 					var dir = Directory.new()
-					dir.make_dir(_path.get_base_dir()+"/include")
 					dir.copy("res://addons/instant_games_bridge/include/instant-games-bridge.js", _path.get_base_dir()+"/instant-games-bridge.js")
 			
 			includes += script_path
