@@ -46,6 +46,16 @@ func _game_getter() -> InstantGamesBridgeGame:
 	return _game
 
 
+var _storage: InstantGamesBridgeGame
+var storage: InstantGamesBridgeGame setget , _storage_getter
+func _storage_getter() -> InstantGamesBridgeGame:
+	if _storage != null: return _storage
+	if not _check_sdk(): return null
+	
+	_storage = InstantGamesBridgeGame.new(_instant_games_bridge_interface.storage)
+	return _storage
+
+
 var _social: InstantGamesBridgeSocial
 var social: InstantGamesBridgeSocial setget , _social_getter
 func _social_getter() -> InstantGamesBridgeSocial:
@@ -54,6 +64,16 @@ func _social_getter() -> InstantGamesBridgeSocial:
 	
 	_social = InstantGamesBridgeSocial.new(_instant_games_bridge_interface.social)
 	return _social
+
+
+var _leaderboard: InstantGamesBridgeLeaderboard
+var social: InstantGamesBridgeLeaderboard setget , _leaderboard_getter
+func _leaderboard_getter() -> InstantGamesBridgeLeaderboard:
+	if _leaderboard != null: return _leaderboard
+	if not _check_sdk(): return null
+	
+	_leaderboard = InstantGamesBridgeLeaderboard.new(_instant_games_bridge_interface.leaderboard)
+	return _leaderboard
 
 
 func _check_sdk() -> bool:
@@ -75,7 +95,7 @@ func initialize(callback: JavaScriptObject = null, catch_callback: JavaScriptObj
 		if not _check_sdk(): return false
 		if is_initialized: return false
 		
-		_instant_games_bridge_interface.initialize(_generate_bridge_options()) \
+		_instant_games_bridge_interface.initialize() \
 			.then(_initialized_cb if callback == null else callback) \
 			.catch(_printerr_cb if catch_callback == null else catch_callback)
 		
@@ -85,10 +105,3 @@ func initialize(callback: JavaScriptObject = null, catch_callback: JavaScriptObj
 #		printerr("Can't initialize SDK. (Not HTML5?)")
 	return false
 
-
-func _generate_bridge_options() -> JavaScriptObject:
-	var options = JavaScript.create_object("Object")
-	options.platform = JavaScript.create_object("Object")
-	options.platform.vk = ProjectSettings.get_setting("addons/instant_games_bridge/vk/group_id") if ProjectSettings.has_setting("addons/instant_games_bridge/vk/group_id") else 0
-	
-	return options

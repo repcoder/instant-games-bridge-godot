@@ -6,7 +6,7 @@ var _set_data_cb = JavaScript.create_callback(self, "_saved")
 
 var _adv
 var _platform
-var _game
+var _storage
 
 func _ready() -> void:
 	logger("Init SDK")
@@ -45,8 +45,8 @@ func _initialized() -> void:
 	logger("\nPLATFORM:")
 	_check_platform_info()
 	
-	logger("\nGAME:")
-	_check_game()
+	logger("\nSTORAGE:")
+	_check_storage()
 	
 	yield(get_tree().create_timer(2.0), "timeout")
 	
@@ -63,17 +63,17 @@ func _check_platform_info() -> void:
 	logger("Payload: " + str(_platform.payload))
 
 
-func _check_game() -> void:
-	_game = InstantGamesBridge.game
+func _check_storage() -> void:
+	_storage = InstantGamesBridge.storage
 
-	_game.set_data("gold", 100, _set_data_cb)
-	_game.set_data("name", "John", _set_data_cb)
+	_storage.set_data("gold", 100, _set_data_cb)
+	_storage.set_data("name", "John", _set_data_cb)
 	
 	logger("Wait 1 second")
 	yield(get_tree().create_timer(1.0), "timeout")
 	
-	_game.get_data("gold", _get_data_cb)
-	_game.get_data("name", _get_data_cb)
+	_storage.get_data("gold", _get_data_cb)
+	_storage.get_data("name", _get_data_cb)
 
 
 func _apply_data(args) -> void:

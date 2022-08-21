@@ -10,9 +10,19 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "DeviceType",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/device/device_type.gd"
+}, {
+"base": "Reference",
 "class": "InstantGamesBridgeAdvertisement",
 "language": "GDScript",
-"path": "res://addons/instant_games_bridge/advertisement.gd"
+"path": "res://addons/instant_games_bridge/advertisement/advertisement.gd"
+}, {
+"base": "Reference",
+"class": "InstantGamesBridgeDevice",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/device/device.gd"
 }, {
 "base": "Reference",
 "class": "InstantGamesBridgeGame",
@@ -27,7 +37,12 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "InstantGamesBridgePlatform",
 "language": "GDScript",
-"path": "res://addons/instant_games_bridge/platform.gd"
+"path": "res://addons/instant_games_bridge/platform/platform.gd"
+}, {
+"base": "Reference",
+"class": "InstantGamesBridgePlayer",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/player.gd"
 }, {
 "base": "Reference",
 "class": "InstantGamesBridgeSettings",
@@ -42,21 +57,48 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "InterstitialState",
 "language": "GDScript",
-"path": "res://addons/instant_games_bridge/interstitial_state.gd"
+"path": "res://addons/instant_games_bridge/const/interstitial_state.gd"
+}, {
+"base": "Reference",
+"class": "Plarform",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/const/platform copy.gd"
+}, {
+"base": "Reference",
+"class": "Platform",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/const/platform/platform_id.gd"
+}, {
+"base": "Reference",
+"class": "PlatformID",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/platform/platform_id.gd"
+}, {
+"base": "Reference",
+"class": "PlayerAuthorizationOptions",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/playerOptions/yandex_player_authorization_options.gd"
 }, {
 "base": "Reference",
 "class": "RewardState",
 "language": "GDScript",
-"path": "res://addons/instant_games_bridge/reward_state.gd"
+"path": "res://addons/instant_games_bridge/const/reward_state.gd"
 } ]
 _global_script_class_icons={
+"DeviceType": "",
 "InstantGamesBridgeAdvertisement": "",
+"InstantGamesBridgeDevice": "",
 "InstantGamesBridgeGame": "",
 "InstantGamesBridgeInjection": "",
 "InstantGamesBridgePlatform": "",
+"InstantGamesBridgePlayer": "",
 "InstantGamesBridgeSettings": "",
 "InstantGamesBridgeSocial": "",
 "InterstitialState": "",
+"Plarform": "",
+"Platform": "",
+"PlatformID": "",
+"PlayerAuthorizationOptions": "",
 "RewardState": ""
 }
 

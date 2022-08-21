@@ -11,6 +11,11 @@ var _rewarded_state_changed_cb = JavaScript.create_callback(self, "_rewarded_sta
 var _printerr_cb = JavaScript.create_callback(self, "printerr")
 
 
+var minimum_delay_between_interstitial: int setget , _minimum_delay_between_interstitial_getter
+func _minimum_delay_between_interstitial_getter() -> int:
+	return _interface.minimumDelayBetweenInterstitial  if _interface != null else 60
+
+
 func _init(interface: JavaScriptObject) -> void:
 	_interface = interface
 	
@@ -28,15 +33,31 @@ func _rewarded_state_changed(args) -> void:
 
 func set_minimum_delay_between_interstitial(delay: int) -> void:
 	if _interface == null: return
+
+	var options = JavaScript.create_object("Object")
+	options.delay = delay
 	
-	_interface.setMinimumDelayBetweenInterstitial(delay)
+	_interface.setMinimumDelayBetweenInterstitial(options)
 
-
-func show_interstitial(ignore_delay = false, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
+func set_minimum_delay_between_interstitial(delayOptions: DelayOptions) -> void:
 	if _interface == null: return
 	
+	_interface.setMinimumDelayBetweenInterstitial(delayOptions._convert())
+
+
+func show_interstitial(ignoreDelay: bool = false, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
+	if _interface == null: return
+
 	var options = JavaScript.create_object("Object")
-	options.ignoreDelay = ignore_delay
+	options.ignoreDelay = ignoreDelay
+
+	_interface.showInterstitial(options) \
+		.then(callback) \
+		.catch(catch_callback if catch_callback != null else _printerr_cb)
+
+func show_interstitial(options: InterstitialOptions, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
+	if _interface == null: return
+
 	_interface.showInterstitial(options) \
 		.then(callback) \
 		.catch(catch_callback if catch_callback != null else _printerr_cb)

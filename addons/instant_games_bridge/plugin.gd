@@ -32,13 +32,6 @@ func _enter_tree():
 		TYPE_BOOL, 
 		PROPERTY_HINT_NONE, 
 		"If initialization occurs automatically, an interstitial advertisement will be requested after successful initialization.")
-	
-	_add_custom_project_setting(
-		"addons/instant_games_bridge/vk/group_id", 
-		0, 
-		TYPE_INT, 
-		PROPERTY_HINT_NONE, 
-		"The `groupID` identifier is used on the VK platform for some social functions.")
 
 	var error: int = ProjectSettings.save()
 	if error: push_error("Encountered error %d when saving project settings." % error)
