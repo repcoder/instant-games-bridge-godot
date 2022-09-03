@@ -67,7 +67,7 @@ func _social_getter() -> InstantGamesBridgeSocial:
 
 
 var _leaderboard: InstantGamesBridgeLeaderboard
-var social: InstantGamesBridgeLeaderboard setget , _leaderboard_getter
+var leaderboard: InstantGamesBridgeLeaderboard setget , _leaderboard_getter
 func _leaderboard_getter() -> InstantGamesBridgeLeaderboard:
 	if _leaderboard != null: return _leaderboard
 	if not _check_sdk(): return null

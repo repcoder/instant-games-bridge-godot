@@ -72,8 +72,8 @@ func _check_storage() -> void:
 	logger("Wait 1 second")
 	yield(get_tree().create_timer(1.0), "timeout")
 	
-	_storage.get_data("gold", _get_data_cb)
-	_storage.get_data("name", _get_data_cb)
+	_storage.get_data("gold", null, _get_data_cb)
+	_storage.get_data("name", null, _get_data_cb)
 
 
 func _apply_data(args) -> void:

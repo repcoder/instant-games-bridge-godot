@@ -31,36 +31,36 @@ func _rewarded_state_changed(args) -> void:
 	emit_signal("rewarded_state_changed", str(args[0]))
 
 
-func set_minimum_delay_between_interstitial(delay: int) -> void:
+func set_minimum_delay_between_interstitial(delay) -> void:
 	if _interface == null: return
 
-	var options = JavaScript.create_object("Object")
-	options.delay = delay
-	
-	_interface.setMinimumDelayBetweenInterstitial(options)
+	if typeof(delay) == TYPE_INT:
+		var options = JavaScript.create_object("Object")
+		options.delay = delay
+		
+		_interface.setMinimumDelayBetweenInterstitial(options)
+	elif delay is DelayOptions:
+		_interface.setMinimumDelayBetweenInterstitial(delay._convert())
+	else:
+		printerr("Error: delay.type != int || DelayOptions")
 
-func set_minimum_delay_between_interstitial(delayOptions: DelayOptions) -> void:
-	if _interface == null: return
-	
-	_interface.setMinimumDelayBetweenInterstitial(delayOptions._convert())
 
-
-func show_interstitial(ignoreDelay: bool = false, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
-	if _interface == null: return
-
-	var options = JavaScript.create_object("Object")
-	options.ignoreDelay = ignoreDelay
-
-	_interface.showInterstitial(options) \
-		.then(callback) \
-		.catch(catch_callback if catch_callback != null else _printerr_cb)
-
-func show_interstitial(options: InterstitialOptions, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
+func show_interstitial(ignoreDelay = false, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
 	if _interface == null: return
 
-	_interface.showInterstitial(options) \
-		.then(callback) \
-		.catch(catch_callback if catch_callback != null else _printerr_cb)
+	if typeof(ignoreDelay) == TYPE_BOOL:
+		var options = JavaScript.create_object("Object")
+		options.ignoreDelay = ignoreDelay
+
+		_interface.showInterstitial(options) \
+			.then(callback) \
+			.catch(catch_callback if catch_callback != null else _printerr_cb)
+	elif ignoreDelay is InterstitialOptions:
+		_interface.showInterstitial(ignoreDelay._convert()) \
+			.then(callback) \
+			.catch(catch_callback if catch_callback != null else _printerr_cb)
+	else:
+		printerr("Error: ignoreDelay.type != bool || InterstitialOptions")
 
 
 func show_rewarded(callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:

@@ -1,4 +1,4 @@
-class_name GetEntryOptionsVk
+class_name NativePopupOptionsVk
 
 var user_result: int = 0
 var global: bool = false

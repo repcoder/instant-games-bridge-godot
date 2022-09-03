@@ -5,5 +5,6 @@ var attachments: String = "photo-199747461_457239629"
 
 func _convert() -> JavaScriptObject:
     var options = JavaScript.create_object("Object")
-    options.groupId = groupId
+    options.message = message
+    options.attachments = attachments
     return options

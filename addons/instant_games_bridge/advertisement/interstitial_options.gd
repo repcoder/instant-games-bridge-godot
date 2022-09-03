@@ -1,16 +1,11 @@
 class_name InterstitialOptions
 
-var vk: InterstitialOptions
-var yandex: InterstitialOptions
-
-
-func _init() -> void:
-	vk = InterstitialOptions.new()
-	yandex = InterstitialOptions.new()
+var vk: bool = false
+var yandex: bool = false
 
 
 func _convert() -> JavaScriptObject:
 	var options = JavaScript.create_object("Object")
-	options.vk = vk._convert()
-	options.yandex = yandex._convert()
+	options.vk = vk
+	options.yandex = yandex
 	return options

@@ -43,7 +43,7 @@ func set_score(options: SetScoreOptions, callback: JavaScriptObject = null, catc
 		.catch(catch_callback if catch_callback != null else _printerr_cb)
 
 
-func get_score(options: GetScoreOptions, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
+func get_score(options: GetScoreOptions, callback: JavaScriptObject, catch_callback: JavaScriptObject = null) -> void:
 	if _interface == null: return 
 	
 	_interface.getScore(options) \
@@ -51,7 +51,7 @@ func get_score(options: GetScoreOptions, callback: JavaScriptObject = null, catc
 		.catch(catch_callback if catch_callback != null else _printerr_cb)
 
 
-func get_entries(options: GetEntryOptions, callback: JavaScriptObject = null, catch_callback: JavaScriptObject = null) -> void:
+func get_entries(options: GetEntryOptions, callback: JavaScriptObject, catch_callback: JavaScriptObject = null) -> void:
 	if _interface == null: return
 	
 	_interface.getEntries(options) \
