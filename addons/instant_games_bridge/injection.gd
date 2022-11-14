@@ -1,7 +1,7 @@
 extends EditorExportPlugin
 class_name InstantGamesBridgeInjection
 
-const CDN_PATH = """\n<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/instant-games-bridge/instant-games-bridge@1.2.1/dist/instant-games-bridge.js"></script>\n"""
+const CDN_PATH = """\n<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/instant-games-bridge/instant-games-bridge@1.5.2/dist/instant-games-bridge.js"></script>\n"""
 const LOCAL_PATH = """\n<script type="text/javascript" src="instant-games-bridge.js"></script>\n"""
 
 var _path = ""
@@ -40,10 +40,6 @@ func _export_end() -> void:
 			if ProjectSettings.has_setting("addons/instant_games_bridge/initialize/initialize_automatically"):
 				if ProjectSettings.get_setting("addons/instant_games_bridge/initialize/initialize_automatically"):
 					
-					var vkId = 0
-					if ProjectSettings.has_setting("addons/instant_games_bridge/vk/group_id"):
-						vkId = ProjectSettings.get_setting("addons/instant_games_bridge/vk/group_id")
-					
 					var adv = ""
 					if ProjectSettings.has_setting("addons/instant_games_bridge/initialize/show_interstitial_after_init"):
 						if ProjectSettings.get_setting("addons/instant_games_bridge/initialize/show_interstitial_after_init"):
@@ -51,14 +47,6 @@ func _export_end() -> void:
 					
 					includes += """
 					<script>
-						let bridgeOptions = {
-							platforms: {
-								vk: {
-									groupId: %d
-								}
-							}
-						}
-						
 						instantGamesBridge.initialize(bridgeOptions)
 							.then(() => {
 								%s
@@ -67,7 +55,7 @@ func _export_end() -> void:
 								
 							})
 					</script>
-					""" % [vkId, adv]
+					""" % [adv]
 	
 	if not includes.empty():
 		var file = File.new()

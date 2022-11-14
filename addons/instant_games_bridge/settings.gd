@@ -8,10 +8,3 @@ func _initialize_automaticly_getter() -> bool:
 		
 	return ProjectSettings.has_setting("addons/instant_games_bridge/initialize/initialize_automatically")
 
-
-var vk_group_id: int setget , _vk_group_id_getter
-func _vk_group_id_getter() -> int:
-	if not ProjectSettings.has_setting("addons/instant_games_bridge/vk/group_id"):
-		return 0
-		
-	return ProjectSettings.get_setting("addons/instant_games_bridge/vk/group_id")

@@ -3,13 +3,14 @@ extends Reference
 
 var _interface: JavaScriptObject
 
+
 func _init(interface: JavaScriptObject) -> void:
 	_interface = interface
 
 
 var id: String setget , _id_getter
 func _id_getter() -> String:
-	return _interface.id if _interface != null else "mock"
+	return _interface.id if _interface != null else PlatformID.MOCK
 
 var sdk: JavaScriptObject setget , _sdk_getter
 func _sdk_getter() -> JavaScriptObject:
