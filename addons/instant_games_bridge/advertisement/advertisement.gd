@@ -10,6 +10,13 @@ var _interstitial_state_changed_cb = JavaScript.create_callback(self, "_intersti
 var _rewarded_state_changed_cb = JavaScript.create_callback(self, "_rewarded_state_changed")
 var _printerr_cb = JavaScript.create_callback(self, "printerr")
 
+var is_banner_supported: bool setget , _is_banner_supported_getter
+func _is_banner_supported_getter() -> bool:
+	return _interface.isBannerSupported  if _interface != null else false
+
+var is_banner_showing: bool setget , _is_banner_showing_getter
+func _is_banner_showing_getter() -> bool:
+	return _interface.isBannerShowing  if _interface != null else false
 
 var minimum_delay_between_interstitial: int setget , _minimum_delay_between_interstitial_getter
 func _minimum_delay_between_interstitial_getter() -> int:
@@ -29,6 +36,18 @@ func _interstitial_state_changed(args) -> void:
 
 func _rewarded_state_changed(args) -> void:
 	emit_signal("rewarded_state_changed", str(args[0]))
+
+
+func show_banner(options: BannerOptions) -> void:
+	if _interface == null: return
+
+	_interface.showBanner(options._convert())
+
+
+func hide_banner() -> void:
+	if _interface == null: return
+
+	_interface.hideBanner()
 
 
 func set_minimum_delay_between_interstitial(delay) -> void:

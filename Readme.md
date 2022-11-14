@@ -80,12 +80,23 @@ payload # -> String
 ### Advertisement
 #### Parameters
 ```gdscript
+# Banners
+is_banner_supported # -> bool
+is_banner_showing # -> bool
+
 # Delays Between Interstitials
 # Default = 60 seconds
 minimum_delay_between_interstitial # -> int
 ```
 #### Options
 ```gdscript
+# Banners 
+bannersOptions
+    vk: bannersOptionsVk
+
+bannersOptionsVk
+    position: String # default = "bottom"
+
 # You can override minimum delay. You can use platform specific delays:
 delayDelayOptions
     vk: int
@@ -99,6 +110,9 @@ InterstitialOptions
 ```
 #### Methods
 ```gdscript
+show_banner(options: BannerOptions) -> void
+hide_banner() -> void
+
 set_minimum_delay_between_interstitial(delay: int) -> void
 # or
 set_minimum_delay_between_interstitial(delay: DelayOptions) -> void

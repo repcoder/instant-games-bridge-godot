@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "BannerOptions",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/advertisement/banner_options.gd"
+}, {
+"base": "Reference",
+"class": "BannerOptionsVk",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/advertisement/banner_options_vk.gd"
+}, {
+"base": "Reference",
 "class": "CreatePostOptions",
 "language": "GDScript",
 "path": "res://addons/instant_games_bridge/social/create_post_options.gd"
@@ -183,8 +193,15 @@ _global_script_classes=[ {
 "class": "YandexPlayerAuthorizationOptions",
 "language": "GDScript",
 "path": "res://addons/instant_games_bridge/player/yandex_player_authorization_options.gd"
+}, {
+"base": "Reference",
+"class": "bannerOptions",
+"language": "GDScript",
+"path": "res://addons/instant_games_bridge/advertisement/banner_options copy.gd"
 } ]
 _global_script_class_icons={
+"BannerOptions": "",
+"BannerOptionsVk": "",
 "CreatePostOptions": "",
 "CreatePostOptionsVk": "",
 "DelayOptions": "",
@@ -219,7 +236,8 @@ _global_script_class_icons={
 "StorageType": "",
 "StorageTypeOptions": "",
 "VisibilityState": "",
-"YandexPlayerAuthorizationOptions": ""
+"YandexPlayerAuthorizationOptions": "",
+"bannerOptions": ""
 }
 
 [application]
