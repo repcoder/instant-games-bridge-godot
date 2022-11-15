@@ -193,11 +193,6 @@ _global_script_classes=[ {
 "class": "YandexPlayerAuthorizationOptions",
 "language": "GDScript",
 "path": "res://addons/instant_games_bridge/player/yandex_player_authorization_options.gd"
-}, {
-"base": "Reference",
-"class": "bannerOptions",
-"language": "GDScript",
-"path": "res://addons/instant_games_bridge/advertisement/banner_options copy.gd"
 } ]
 _global_script_class_icons={
 "BannerOptions": "",
@@ -236,8 +231,7 @@ _global_script_class_icons={
 "StorageType": "",
 "StorageTypeOptions": "",
 "VisibilityState": "",
-"YandexPlayerAuthorizationOptions": "",
-"bannerOptions": ""
+"YandexPlayerAuthorizationOptions": ""
 }
 
 [application]
