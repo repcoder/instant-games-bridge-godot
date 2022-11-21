@@ -1,7 +1,7 @@
 extends EditorExportPlugin
 class_name InstantGamesBridgeInjection
 
-const CDN_PATH = """\n<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/instant-games-bridge/instant-games-bridge@1.6.1/dist/instant-games-bridge.js"></script>\n"""
+const CDN_PATH = """\n<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/instant-games-bridge/instant-games-bridge@1.6.2/dist/instant-games-bridge.js"></script>\n"""
 const LOCAL_PATH = """\n<script type="text/javascript" src="instant-games-bridge.js"></script>\n"""
 
 var _path = ""
