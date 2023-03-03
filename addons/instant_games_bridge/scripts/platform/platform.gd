@@ -2,14 +2,21 @@ var id : get = _id_getter
 var payload : get = _payload_getter
 var language : get = _language_getter
 
+
+var _js_platform = null
+
 func _id_getter():
-	return "Mock"
+	return _js_platform.id
 
 func _payload_getter():
-	return ""
+	return _js_platform.payload
 
 func _language_getter():
-	return "en"
+	return _js_platform.language
+	
+func _init(js_platform):
+	_js_platform = js_platform
+
 
 func send_message(message):
-	pass
+	_js_platform.sendMessage(message)
