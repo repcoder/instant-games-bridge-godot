@@ -221,10 +221,6 @@ body {
                 } else {
                     setStatusMode('indeterminate');
                     bridge.initialize().then(() => {
-                        /*bridge.player.authorize = function() {
-                            console.log('auth2')
-                            return Promise.resolve()
-                        }*/
                         engine.startGame({
                             'onProgress': function (current, total) {
                                 if (total > 0) {

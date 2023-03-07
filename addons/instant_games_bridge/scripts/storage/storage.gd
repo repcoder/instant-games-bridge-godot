@@ -1,11 +1,10 @@
 var default_type : get = _default_type_getter
 
-var _js_storage = null
 
 func _default_type_getter():
 	return _js_storage.defaultType
 
-
+var _js_storage = null
 var _is_getting = false
 var _get_callback = null
 var _js_get_then = JavaScriptBridge.create_callback(_on_js_get_then)
@@ -54,20 +53,49 @@ func get(key, callback = null, storage_type = null):
 func set(key, value, callback = null, storage_type = null):
 	if _is_setting:
 		return
-
-	_is_getting = true
+	
+	var js_key
+	var js_value
+	var key_type = typeof(key)
+	match key_type:
+		TYPE_STRING:
+			js_key = key
+			js_value = value
+		TYPE_ARRAY:
+			js_key = JavaScriptBridge.create_object("Array")
+			js_value = JavaScriptBridge.create_object("Array")
+			for k in key:
+				js_key.push(k)
+			for v in value:
+				js_value.push(v)
+		_:
+			return
+	
+	_is_setting = true
 	_set_callback = callback
-	_js_storage.set(key, value, storage_type) \
+	_js_storage.set(js_key, js_value, storage_type) \
 		.then(_js_set_then) \
 		.catch(_js_set_catch)
 
 func delete(key, callback = null, storage_type = null):
 	if _is_deleting:
 		return
-
+	
+	var js_key
+	var key_type = typeof(key)
+	match key_type:
+		TYPE_STRING:
+			js_key = key
+		TYPE_ARRAY:
+			js_key = JavaScriptBridge.create_object("Array")
+			for k in key:
+				js_key.push(k)
+		_:
+			return
+	
 	_is_deleting = true
 	_delete_callback = callback
-	_js_storage.delete(key, storage_type) \
+	_js_storage.delete(js_key, storage_type) \
 		.then(_js_delete_then) \
 		.catch(_js_delete_catch)
 
@@ -77,8 +105,23 @@ func _init(js_storage):
 
 func _on_js_get_then(args):
 	_is_getting = false
-	if _get_callback != null:
-		_get_callback.call(true, args[0])
+	if _get_callback == null:
+		return
+	
+	var data = args[0]
+	var data_type = typeof(data)
+	match data_type:
+		TYPE_NIL:
+			_get_callback.call(true, null)
+		TYPE_OBJECT:
+			var array = []
+			for i in range(data.length):
+				array.append(data[i])
+			_get_callback.call(true, array)
+		TYPE_STRING:
+			_get_callback.call(true, data)
+		_:
+			_get_callback.call(false, null)
 
 func _on_js_get_catch(args):
 	_is_getting = false
@@ -86,12 +129,12 @@ func _on_js_get_catch(args):
 		_get_callback.call(false, null)
 
 func _on_js_set_then(args):
-	_is_getting = false
+	_is_setting = false
 	if _set_callback != null:
 		_set_callback.call(true)
 
 func _on_js_set_catch(args):
-	_is_getting = false
+	_is_setting = false
 	if _set_callback != null:
 		_set_callback.call(false)
 

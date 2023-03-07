@@ -18,7 +18,10 @@ func _name_getter():
 	return _js_player.name
 
 func _photos_getter():
-	return _js_player.photos
+	var array = []
+	for i in range(_js_player.photos.length):
+		array.append(_js_player.photos[i])
+	return array
 
 var _js_player = null
 var _js_authorize_then = JavaScriptBridge.create_callback(_on_js_authorize_then)
@@ -40,9 +43,11 @@ func _init(js_player):
 	_js_player = js_player
 
 func _on_js_authorize_then(args):
-	_authorize_callback.call(true)
-	_authorize_callback = null
+	if _authorize_callback != null:
+		_authorize_callback.call(true)
+		_authorize_callback = null
 
 func _on_js_authorize_catch(args):
-	_authorize_callback.call(false)
-	_authorize_callback = null
+	if _authorize_callback != null:
+		_authorize_callback.call(false)
+		_authorize_callback = null
