@@ -1,10 +1,11 @@
-var is_share_supported : get = _is_share_supported_getter
-var is_join_community_supported : get = _is_join_community_supported_getter
-var is_invite_friends_supported : get = _is_invite_friends_supported_getter
-var is_create_post_supported : get = _is_create_post_supported_getter
-var is_add_to_favorites_supported : get = _is_add_to_favorites_supported_getter
-var is_add_to_home_screen_supported : get = _is_add_to_home_screen_supported_getter
-var is_rate_supported : get = _is_rate_supported_getter
+var is_share_supported setget , _is_share_supported_getter
+var is_join_community_supported setget , _is_join_community_supported_getter
+var is_invite_friends_supported setget , _is_invite_friends_supported_getter
+var is_create_post_supported setget , _is_create_post_supported_getter
+var is_add_to_favorites_supported setget , _is_add_to_favorites_supported_getter
+var is_add_to_home_screen_supported setget , _is_add_to_home_screen_supported_getter
+var is_external_links_allowed setget , _is_external_links_allowed_getter
+var is_rate_supported setget , _is_rate_supported_getter
 
 
 func _is_share_supported_getter():
@@ -25,31 +26,34 @@ func _is_add_to_favorites_supported_getter():
 func _is_add_to_home_screen_supported_getter():
 	return _js_social.isAddToHomeScreenSupported
 
+func _is_external_links_allowed_getter():
+	return _js_social.isExternalLinksAllowed
+
 func _is_rate_supported_getter():
 	return _js_social.isRateSupported
 	
 var _js_social = null
 var _share_callback = null
-var _js_share_then = JavaScriptBridge.create_callback(_on_js_share_then)
-var _js_share_catch = JavaScriptBridge.create_callback(_on_js_share_catch)
+var _js_share_then = JavaScript.create_callback(self, "_on_js_share_then")
+var _js_share_catch = JavaScript.create_callback(self, "_on_js_share_catch")
 var _join_community_callback = null
-var _js_join_community_then = JavaScriptBridge.create_callback(_on_js_join_community_then)
-var _js_join_community_catch = JavaScriptBridge.create_callback(_on_js_join_community_catch)
+var _js_join_community_then = JavaScript.create_callback(self, "_on_js_join_community_then")
+var _js_join_community_catch = JavaScript.create_callback(self, "_on_js_join_community_catch")
 var _invite_friends_callback = null
-var _js_invite_friends_then = JavaScriptBridge.create_callback(_on_js_invite_friends_then)
-var _js_invite_friends_catch = JavaScriptBridge.create_callback(_on_js_invite_friends_catch)
+var _js_invite_friends_then = JavaScript.create_callback(self, "_on_js_invite_friends_then")
+var _js_invite_friends_catch = JavaScript.create_callback(self, "_on_js_invite_friends_catch")
 var _create_post_callback = null
-var _js_create_post_then = JavaScriptBridge.create_callback(_on_js_create_post_then)
-var _js_create_post_catch = JavaScriptBridge.create_callback(_on_js_create_post_catch)
+var _js_create_post_then = JavaScript.create_callback(self, "_on_js_create_post_then")
+var _js_create_post_catch = JavaScript.create_callback(self, "_on_js_create_post_catch")
 var _add_to_favorites_callback = null
-var _js_add_to_favorites_then = JavaScriptBridge.create_callback(_on_js_add_to_favorites_then)
-var _js_add_to_favorites_catch = JavaScriptBridge.create_callback(_on_js_add_to_favorites_catch)
+var _js_add_to_favorites_then = JavaScript.create_callback(self, "_on_js_add_to_favorites_then")
+var _js_add_to_favorites_catch = JavaScript.create_callback(self, "_on_js_add_to_favorites_catch")
 var _add_to_home_screen_callback = null
-var _js_add_to_home_screen_then = JavaScriptBridge.create_callback(_on_js_add_to_home_screen_then)
-var _js_add_to_home_screen_catch = JavaScriptBridge.create_callback(_on_js_add_to_home_screen_catch)
+var _js_add_to_home_screen_then = JavaScript.create_callback(self, "_on_js_add_to_home_screen_then")
+var _js_add_to_home_screen_catch = JavaScript.create_callback(self, "_on_js_add_to_home_screen_catch")
 var _rate_callback = null
-var _js_rate_then = JavaScriptBridge.create_callback(_on_js_rate_then)
-var _js_rate_catch = JavaScriptBridge.create_callback(_on_js_rate_catch)
+var _js_rate_then = JavaScript.create_callback(self, "_on_js_rate_then")
+var _js_rate_catch = JavaScript.create_callback(self, "_on_js_rate_catch")
 
 
 func share(options, callback = null):
@@ -58,13 +62,13 @@ func share(options, callback = null):
 	
 	if not options is Bridge.ShareVkOptions:
 		if callback != null:
-			callback.call(false)
+			callback.call_func(false)
 		return
 	
 	_share_callback = callback
 	
-	var js_options = JavaScriptBridge.create_object("Object")
-	js_options.vk = JavaScriptBridge.create_object("Object")
+	var js_options = JavaScript.create_object("Object")
+	js_options.vk = JavaScript.create_object("Object")
 	js_options.vk.link = options.link
 	
 	_js_social.share(js_options) \
@@ -77,13 +81,13 @@ func join_community(options, callback = null):
 	
 	if not options is Bridge.JoinCommunityVkOptions:
 		if callback != null:
-			callback.call(false)
+			callback.call_func(false)
 		return
 	
 	_join_community_callback = callback
 	
-	var js_options = JavaScriptBridge.create_object("Object")
-	js_options.vk = JavaScriptBridge.create_object("Object")
+	var js_options = JavaScript.create_object("Object")
+	js_options.vk = JavaScript.create_object("Object")
 	js_options.vk.groupId = options.group_id
 	
 	_js_social.joinCommunity(js_options) \
@@ -105,13 +109,13 @@ func create_post(options, callback = null):
 	
 	if not options is Bridge.CreatePostVkOptions:
 		if callback != null:
-			callback.call(false)
+			callback.call_func(false)
 		return
 	
 	_create_post_callback = callback
 	
-	var js_options = JavaScriptBridge.create_object("Object")
-	js_options.vk = JavaScriptBridge.create_object("Object")
+	var js_options = JavaScript.create_object("Object")
+	js_options.vk = JavaScript.create_object("Object")
 	js_options.vk.message = options.message
 	js_options.vk.attachments = options.attachments
 	
@@ -152,70 +156,70 @@ func _init(js_social):
 
 func _on_js_share_then(args):
 	if _share_callback != null:
-		_share_callback.call(true)
+		_share_callback.call_func(true)
 		_share_callback = null
 
 func _on_js_share_catch(args):
 	if _share_callback != null:
-		_share_callback.call(false)
+		_share_callback.call_func(false)
 		_share_callback = null
 
 func _on_js_join_community_then(args):
 	if _join_community_callback != null:
-		_join_community_callback.call(true)
+		_join_community_callback.call_func(true)
 		_join_community_callback = null
 
 func _on_js_join_community_catch(args):
 	if _join_community_callback != null:
-		_join_community_callback.call(false)
+		_join_community_callback.call_func(false)
 		_join_community_callback = null
 
 func _on_js_invite_friends_then(args):
 	if _invite_friends_callback != null:
-		_invite_friends_callback.call(true)
+		_invite_friends_callback.call_func(true)
 		_invite_friends_callback = null
 
 func _on_js_invite_friends_catch(args):
 	if _invite_friends_callback != null:
-		_invite_friends_callback.call(false)
+		_invite_friends_callback.call_func(false)
 		_invite_friends_callback = null
 
 func _on_js_create_post_then(args):
 	if _create_post_callback != null:
-		_create_post_callback.call(true)
+		_create_post_callback.call_func(true)
 		_create_post_callback = null
 
 func _on_js_create_post_catch(args):
 	if _create_post_callback != null:
-		_create_post_callback.call(false)
+		_create_post_callback.call_func(false)
 		_create_post_callback = null
 
 func _on_js_add_to_favorites_then(args):
 	if _add_to_favorites_callback != null:
-		_add_to_favorites_callback.call(true)
+		_add_to_favorites_callback.call_func(true)
 		_add_to_favorites_callback = null
 
 func _on_js_add_to_favorites_catch(args):
 	if _add_to_favorites_callback != null:
-		_add_to_favorites_callback.call(false)
+		_add_to_favorites_callback.call_func(false)
 		_add_to_favorites_callback = null
 
 func _on_js_add_to_home_screen_then(args):
 	if _add_to_home_screen_callback != null:
-		_add_to_home_screen_callback.call(true)
+		_add_to_home_screen_callback.call_func(true)
 		_add_to_home_screen_callback = null
 
 func _on_js_add_to_home_screen_catch(args):
 	if _add_to_home_screen_callback != null:
-		_add_to_home_screen_callback.call(false)
+		_add_to_home_screen_callback.call_func(false)
 		_add_to_home_screen_callback = null
 
 func _on_js_rate_then(args):
 	if _rate_callback != null:
-		_rate_callback.call(true)
+		_rate_callback.call_func(true)
 		_rate_callback = null
 
 func _on_js_rate_catch(args):
 	if _rate_callback != null:
-		_rate_callback.call(false)
+		_rate_callback.call_func(false)
 		_rate_callback = null

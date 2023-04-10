@@ -2,11 +2,11 @@ signal banner_state_changed
 signal interstitial_state_changed
 signal rewarded_state_changed
 
-var minimum_delay_between_interstitial : get = _minimum_delay_between_interstitial_getter
-var is_banner_supported : get = _is_banner_supported_getter
-var banner_state : get = _banner_state_getter
-var interstitial_state : get = _interstitial_state_getter
-var rewarded_state : get = _rewarded_state_getter
+var minimum_delay_between_interstitial setget , _minimum_delay_between_interstitial_getter
+var is_banner_supported setget , _is_banner_supported_getter
+var banner_state setget , _banner_state_getter
+var interstitial_state setget , _interstitial_state_getter
+var rewarded_state setget , _rewarded_state_getter
 
 
 func _minimum_delay_between_interstitial_getter():
@@ -25,9 +25,9 @@ func _rewarded_state_getter():
 	return _js_advertisement.rewardedState
 
 var _js_advertisement = null
-var _js_on_banner_state_changed = JavaScriptBridge.create_callback(_on_banner_state_changed)
-var _js_on_interstitial_state_changed = JavaScriptBridge.create_callback(_on_interstitial_state_changed)
-var _js_on_rewarded_state_changed = JavaScriptBridge.create_callback(_on_rewarded_state_changed)
+var _js_on_banner_state_changed = JavaScript.create_callback(self, "_on_banner_state_changed")
+var _js_on_interstitial_state_changed = JavaScript.create_callback(self, "_on_interstitial_state_changed")
+var _js_on_rewarded_state_changed = JavaScript.create_callback(self, "_on_rewarded_state_changed")
 
 
 func set_minimum_delay_between_interstitial(value):
@@ -53,10 +53,10 @@ func _init(js_advertisement):
 	_js_advertisement.on('rewarded_state_changed', _js_on_rewarded_state_changed)
 
 func _on_banner_state_changed(args):
-	banner_state_changed.emit(args[0])
+	emit_signal("banner_state_changed", args[0])
 
 func _on_interstitial_state_changed(args):
-	interstitial_state_changed.emit(args[0])
+	emit_signal("interstitial_state_changed", args[0])
 
 func _on_rewarded_state_changed(args):
-	rewarded_state_changed.emit(args[0])
+	emit_signal("rewarded_state_changed", args[0])

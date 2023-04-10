@@ -13,6 +13,14 @@ const VisibilityState = {
 	HIDDEN = "hidden"
 }
 
+const PlatformId = {
+	VK = "vk",
+	YANDEX = "yandex",
+	CRAZY_GAMES = "crazy_games",
+	ABSOLUTE_GAMES = "absolute_games",
+	MOCK = "mock"
+}
+
 const PlatformMessage = {
 	GAME_LOADING_STARTED = "game_loading_started",
 	GAME_LOADING_STOPPED = "game_loading_stopped",
@@ -97,14 +105,14 @@ class ShowNativePopupVkOptions:
 		self.global = global
 
 
-var platform : get = _platform_getter
-var device : get = _device_getter
-var player : get = _player_getter
-var game : get = _game_getter
-var storage : get = _storage_getter
-var advertisement : get = _advertisement_getter
-var social : get = _social_getter
-var leaderboard : get = _leaderboard_getter
+var platform setget , _platform_getter
+var device setget , _device_getter
+var player setget , _player_getter
+var game setget , _game_getter
+var storage setget , _storage_getter
+var advertisement setget , _advertisement_getter
+var social setget , _social_getter
+var leaderboard setget , _leaderboard_getter
 
 
 func _platform_getter():
@@ -141,9 +149,9 @@ var _social = null
 var _leaderboard = null
 
 
-func _init():
-	if OS.has_feature("web"):
-		var js_bridge = JavaScriptBridge.get_interface("bridge")
+func _ready():
+	if OS.has_feature("JavaScript"):
+		var js_bridge = JavaScript.get_interface("bridge")
 		_platform = load("res://addons/instant_games_bridge/scripts/platform/platform.gd").new(js_bridge.platform)
 		_device = load("res://addons/instant_games_bridge/scripts/device/device.gd").new(js_bridge.device)
 		_player = load("res://addons/instant_games_bridge/scripts/player/player.gd").new(js_bridge.player)

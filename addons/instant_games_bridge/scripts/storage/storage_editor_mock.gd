@@ -1,4 +1,4 @@
-var default_type : get = _default_type_getter
+var default_type setget , _default_type_getter
 
 const _FILE_EXTENSION = ".save"
 
@@ -13,12 +13,19 @@ func is_supported(storage_type):
 		_:
 			return false
 
+func is_available(storage_type):
+	match storage_type:
+		Bridge.StorageType.LOCAL_STORAGE:
+			return true
+		_:
+			return false
+
 func get(key, callback = null, storage_type = null):
 	if callback == null:
 		return
 	
 	if storage_type != null and not is_supported(storage_type):
-		callback.call(false, null)
+		callback.call_func(false, null)
 		return
 	
 	var key_type = typeof(key)
@@ -39,11 +46,11 @@ func get(key, callback = null, storage_type = null):
 		_:
 			success = false
 	
-	callback.call(success, data)
+	callback.call_func(success, data)
 
 func set(key, value, callback = null, storage_type = null):
 	if storage_type != null and not is_supported(storage_type):
-		callback.call(false)
+		callback.call_func(false)
 		return
 	
 	var key_type = typeof(key)
@@ -61,11 +68,11 @@ func set(key, value, callback = null, storage_type = null):
 			success = false
 	
 	if callback != null:
-		callback.call(success)
+		callback.call_func(success)
 
 func delete(key, callback = null, storage_type = null):
 	if storage_type != null and not is_supported(storage_type):
-		callback.call(false)
+		callback.call_func(false)
 		return
 	
 	var key_type = typeof(key)
@@ -83,7 +90,7 @@ func delete(key, callback = null, storage_type = null):
 			success = false
 	
 	if callback != null:
-		callback.call(success)
+		callback.call_func(success)
 
 
 func _get_file_path(key):
@@ -91,29 +98,39 @@ func _get_file_path(key):
 
 func _get(key):
 	var path = _get_file_path(key)
+	var dir = Directory.new()
 	
-	if not FileAccess.file_exists(path):
+	if not dir.file_exists(path):
 		return null
 	
-	var file = FileAccess.open(path, FileAccess.READ)
+	var file = File.new()
+	file.open(path, File.READ)
+	
 	var data = file.get_as_text()
 	file = null
 	
-	if data.is_empty():
+	if data.empty():
 		return null
 	else:
 		return data
 
 func _set(key, value):
 	var path = _get_file_path(key)
-	var file = FileAccess.open(path, FileAccess.WRITE)
+	
+	var file = File.new()
+	file.open(path, File.WRITE)
+	
+	if (typeof(value) != TYPE_STRING):
+		value = str(value)
+	
 	file.store_string(value)
 	file = null
 
 func _delete(key):
 	var path = _get_file_path(key)
+	var dir = Directory.new()
 	
-	if not FileAccess.file_exists(path):
+	if not dir.file_exists(path):
 		return
 	
-	DirAccess.remove_absolute(path)
+	dir.remove(path)

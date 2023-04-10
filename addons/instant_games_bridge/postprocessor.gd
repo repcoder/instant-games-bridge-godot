@@ -5,8 +5,10 @@ const JS_SDK_PATH = "res://addons/instant_games_bridge/template/" + JS_SDK_FILE_
 
 func _export_begin(features, is_debug, path, flags):
 	if features.has("web"):
-		var file_from = FileAccess.open(JS_SDK_PATH, FileAccess.READ)
-		var file_to = FileAccess.open(path.get_base_dir() + "/" + JS_SDK_FILE_NAME, FileAccess.WRITE)
+		var file_from = File.new()
+		file_from.open(JS_SDK_PATH, File.READ)
+		var file_to = File.new()
+		file_to.open(path.get_base_dir() + "/" + JS_SDK_FILE_NAME, File.WRITE)
 		file_to.store_string(file_from.get_as_text())
 		file_from = null
 		file_to = null
