@@ -22,8 +22,9 @@ const PlatformId = {
 }
 
 const PlatformMessage = {
-	GAME_LOADING_STARTED = "game_loading_started",
-	GAME_LOADING_STOPPED = "game_loading_stopped",
+	GAME_READY = "game_ready",
+	IN_GAME_LOADING_STARTED = "in_game_loading_started",
+	IN_GAME_LOADING_STOPPED = "in_game_loading_stopped",
 	GAMEPLAY_STARTED = "gameplay_started",
 	GAMEPLAY_STOPPED = "gameplay_stopped",
 	PLAYER_GOT_ACHIEVEMENT = "player_got_achievement"
