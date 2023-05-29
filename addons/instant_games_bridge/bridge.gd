@@ -18,6 +18,7 @@ const PlatformId = {
 	YANDEX = "yandex",
 	CRAZY_GAMES = "crazy_games",
 	ABSOLUTE_GAMES = "absolute_games",
+	GAME_DISTRIBUTION = "game_distribution",
 	MOCK = "mock"
 }
 

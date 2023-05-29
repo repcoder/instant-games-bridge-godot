@@ -219,7 +219,16 @@ $GODOT_HEAD_INCLUDE
                 displayFailureNotice('WebGL not available');
             } else {
                 setStatusMode('indeterminate');
-                bridge.initialize().then(() => {
+
+                let bridgeOptions = {
+                    platforms: {
+                        'game_distribution': {
+                            gameId: '{game_distribution_game_id}'
+                        }
+                    }
+                }
+                
+                bridge.initialize(bridgeOptions).then(() => {
                     engine.startGame({
                     'onProgress': function (current, total) {
                         if (total > 0) {

@@ -8,6 +8,10 @@
 
 config_version=4
 
+[addons]
+
+instant_games_bridge/general/game_distribution_game_id=""
+
 [application]
 
 config/name="instant-games-bridge"
