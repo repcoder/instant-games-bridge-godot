@@ -26,4 +26,3 @@ func _add_project_settings(name, type, default_value, hint = PROPERTY_HINT_NONE,
 		"hint": hint,
 		"hint_string": hint_string
 	})
-	#ProjectSettings.set_initial_value(name, default_value)
