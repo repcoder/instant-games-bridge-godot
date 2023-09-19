@@ -16,7 +16,7 @@ instant_games_bridge/general/game_distribution_game_id=""
 
 config/name="instant-games-bridge"
 run/main_scene="res://_/scenes/example.tscn"
-config/icon="res://icon.png"
+config/icon="res://addons/instant_games_bridge/icon.png"
 
 [autoload]
 
