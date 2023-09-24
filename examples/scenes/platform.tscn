@@ -19,42 +19,37 @@ margin_right = 920.0
 margin_bottom = 430.0
 custom_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="0"]
+[node name="PlatformID" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
 margin_right = 920.0
-margin_bottom = 28.0
-custom_constants/separation = 20
-
-[node name="PlatformID" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 113.0
 margin_bottom = 28.0
 custom_fonts/font = ExtResource( 3 )
 text = "Platform ID:"
 
-[node name="Language" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 133.0
-margin_right = 229.0
-margin_bottom = 28.0
+[node name="Language" type="Label" parent="MarginContainer2/VBoxContainer" index="1"]
+margin_top = 48.0
+margin_right = 920.0
+margin_bottom = 76.0
 custom_fonts/font = ExtResource( 3 )
 text = "Language:"
 
-[node name="Payload" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
-margin_left = 249.0
-margin_right = 327.0
-margin_bottom = 28.0
+[node name="Payload" type="Label" parent="MarginContainer2/VBoxContainer" index="2"]
+margin_top = 96.0
+margin_right = 920.0
+margin_bottom = 124.0
 custom_fonts/font = ExtResource( 3 )
 text = "Payload:"
 
-[node name="Tld" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 347.0
-margin_right = 380.0
-margin_bottom = 28.0
+[node name="Tld" type="Label" parent="MarginContainer2/VBoxContainer" index="3"]
+margin_top = 144.0
+margin_right = 920.0
+margin_bottom = 172.0
 custom_fonts/font = ExtResource( 3 )
 text = "Tld:"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
-margin_top = 48.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+margin_top = 192.0
 margin_right = 920.0
-margin_bottom = 98.0
+margin_bottom = 242.0
 custom_constants/separation = 20
 
 [node name="SendGameReadyButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
@@ -80,10 +75,10 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Send In Game Loading Stopped"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
-margin_top = 118.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="5"]
+margin_top = 262.0
 margin_right = 920.0
-margin_bottom = 168.0
+margin_bottom = 312.0
 custom_constants/separation = 20
 
 [node name="SendGameplayStartedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="0"]

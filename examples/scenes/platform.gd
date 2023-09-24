@@ -1,25 +1,17 @@
 extends DetailedSceneBase
 
 
-onready var id_label = $MarginContainer2/VBoxContainer/HBoxContainer/PlatformID
-onready var language_label = $MarginContainer2/VBoxContainer/HBoxContainer/Language
-onready var payload_label = $MarginContainer2/VBoxContainer/HBoxContainer/Payload
-onready var tld_label = $MarginContainer2/VBoxContainer/HBoxContainer/Tld
+onready var id_label = $MarginContainer2/VBoxContainer/PlatformID
+onready var language_label = $MarginContainer2/VBoxContainer/Language
+onready var payload_label = $MarginContainer2/VBoxContainer/Payload
+onready var tld_label = $MarginContainer2/VBoxContainer/Tld
 
 
 func _ready():
 	id_label.text = "Platform ID: " + Bridge.platform.id
 	language_label.text = "Language: " + Bridge.platform.language
-	
-	if Bridge.platform.payload:
-		payload_label.text = "Payload: " + Bridge.platform.payload
-	else:
-		payload_label.text = "Payload: null"
-	
-	if Bridge.platform.tld:
-		tld_label.text = "TLD: " + Bridge.platform.tld
-	else:
-		tld_label.text = "TLD: null"
+	payload_label.text = "Payload: " + str(Bridge.platform.payload)
+	tld_label.text = "TLD: " + str(Bridge.platform.tld)
 
 
 func _on_send_game_ready_button_pressed():
