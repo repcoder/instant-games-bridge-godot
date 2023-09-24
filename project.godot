@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "DetailedSceneBase",
+"language": "GDScript",
+"path": "res://examples/scenes/detailed_scene_base.gd"
+} ]
+_global_script_class_icons={
+"DetailedSceneBase": ""
+}
+
 [addons]
 
 instant_games_bridge/general/game_distribution_game_id=""
@@ -15,12 +25,19 @@ instant_games_bridge/general/game_distribution_game_id=""
 [application]
 
 config/name="instant-games-bridge"
-run/main_scene="res://_/scenes/example.tscn"
+run/main_scene="res://examples/scenes/main_menu.tscn"
 config/icon="res://addons/instant_games_bridge/icon.png"
 
 [autoload]
 
 Bridge="*res://addons/instant_games_bridge/bridge.gd"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
