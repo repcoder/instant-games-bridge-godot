@@ -25,11 +25,13 @@ rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 2 )
 text = "Instant Games Bridge Examples"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 44.0
 margin_right = 920.0
-margin_bottom = 94.0
-custom_constants/separation = 20
+margin_bottom = 164.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 3
 
 [node name="PlatformButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 180.0
@@ -55,14 +57,24 @@ custom_fonts/font = ExtResource( 2 )
 text = "Player Module"
 
 [node name="GameButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 600.0
-margin_right = 780.0
-margin_bottom = 50.0
+margin_top = 70.0
+margin_right = 180.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Game Module"
+
+[node name="StorageButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 200.0
+margin_top = 70.0
+margin_right = 380.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 180, 50 )
+custom_fonts/font = ExtResource( 2 )
+text = "Storage Module"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlatformButton" to="." method="_on_platform_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeviceButton" to="." method="_on_device_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayerButton" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GameButton" to="." method="_on_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StorageButton" to="." method="_on_storage_button_pressed"]

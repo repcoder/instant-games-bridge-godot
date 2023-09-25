@@ -11,3 +11,6 @@ func _on_player_button_pressed():
 
 func _on_game_button_pressed():
 	get_tree().change_scene("res://examples/scenes/game.tscn")
+
+func _on_storage_button_pressed():
+	get_tree().change_scene("res://examples/scenes/storage.tscn")
