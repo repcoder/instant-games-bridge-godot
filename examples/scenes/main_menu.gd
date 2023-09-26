@@ -14,3 +14,6 @@ func _on_game_button_pressed():
 
 func _on_storage_button_pressed():
 	get_tree().change_scene("res://examples/scenes/storage.tscn")
+
+func _on_advertisement_button_pressed():
+	get_tree().change_scene("res://examples/scenes/advertisement.tscn")

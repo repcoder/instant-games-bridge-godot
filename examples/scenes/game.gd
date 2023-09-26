@@ -13,6 +13,10 @@ func _ready():
 
 func _on_visibility_state_changed(state):
 	last_visibility_states.append(state)
+	
+	if last_visibility_states.size() > 5:
+		last_visibility_states.remove(0)
+	
 	_update_last_states()
 
 func _update_last_states():

@@ -4,7 +4,7 @@ var language setget , _language_getter
 var tld setget , _tld_getter
 
 func _id_getter():
-	return "mock"
+	return Bridge.PlatformId.MOCK
 
 func _payload_getter():
 	return null

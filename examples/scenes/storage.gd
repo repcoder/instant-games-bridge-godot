@@ -33,22 +33,19 @@ func _on_storage_get_completed(success, data):
 		print(data)
 		
 		if data[0] != null:
-			coins_input.text = data[0]
+			coins_input.text = str(data[0])
 		else:
 			coins_input.text = ""
 			print("Coins is null")
 		
 		if data[1] != null:
-			level_id_input.text = data[1]
+			level_id_input.text = str(data[1])
 		else:
 			level_id_input.text = ""
 			print("Level ID is null")
 		
 		if data[2] != null:
-			if data[2] == "True":
-				is_tutorial_completed_checkbox.pressed = true
-			else:
-				is_tutorial_completed_checkbox.pressed = false
+			is_tutorial_completed_checkbox.pressed = data[2]
 		else:
 			is_tutorial_completed_checkbox.pressed = false
 			print("Is Tutorial Completed is null")

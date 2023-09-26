@@ -31,7 +31,7 @@ var _rewarded_state
 
 func _init():
 	_banner_state = Bridge.BannerState.HIDDEN
-	interstitial_state = Bridge.InterstitialState.CLOSED
+	_interstitial_state = Bridge.InterstitialState.CLOSED
 	_rewarded_state = Bridge.RewardedState.CLOSED
 
 func set_minimum_delay_between_interstitial(value):

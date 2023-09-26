@@ -50,7 +50,7 @@ text = "Device Module"
 
 [node name="PlayerButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 400.0
-margin_right = 580.0
+margin_right = 623.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
@@ -73,8 +73,18 @@ rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Storage Module"
 
+[node name="AdvertisementButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 400.0
+margin_top = 70.0
+margin_right = 623.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 180, 50 )
+custom_fonts/font = ExtResource( 2 )
+text = "Advertisement Module"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlatformButton" to="." method="_on_platform_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeviceButton" to="." method="_on_device_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayerButton" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StorageButton" to="." method="_on_storage_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AdvertisementButton" to="." method="_on_advertisement_button_pressed"]
