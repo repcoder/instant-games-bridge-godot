@@ -15,7 +15,7 @@ Plugins for other game engines:
 + [Construct](https://github.com/mewtongames/instant-games-bridge-construct)
 + [Defold](https://github.com/mewtongames/instant-games-bridge-defold)
 
-Documentation: https://mewton.gitbook.io/instant-games-bridge [RU]
+Documentation: https://getbridge.org
 
 Roadmap: https://trello.com/b/NjF29vTW
 
