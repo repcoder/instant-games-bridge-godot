@@ -33,8 +33,14 @@ var _js_on_rewarded_state_changed = JavaScript.create_callback(self, "_on_reward
 func set_minimum_delay_between_interstitial(value):
 	_js_advertisement.setMinimumDelayBetweenInterstitial(value)
 
-func show_banner():
-	_js_advertisement.showBanner()
+func show_banner(options):
+	var js_options = JavaScript.create_object("Object")
+	js_options.containerId = "banner-container"
+	
+	if options is Bridge.ShowBannerOptions:
+		js_options.containerId = options.container_id
+
+	_js_advertisement.showBanner(js_options)
 
 func hide_banner():
 	_js_advertisement.hideBanner()

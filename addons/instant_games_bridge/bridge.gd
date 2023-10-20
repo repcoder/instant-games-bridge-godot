@@ -59,6 +59,11 @@ const RewardedState = {
 }
 
 
+class ShowBannerOptions:
+	var container_id
+	func _init(container_id):
+		self.container_id = container_id
+
 class ShareVkOptions:
 	var link
 	func _init(link):

@@ -25,7 +25,7 @@ func _ready():
 
 
 func _on_show_banner_button_pressed():
-	Bridge.advertisement.show_banner()
+	Bridge.advertisement.show_banner(Bridge.ShowBannerOptions.new("banner-container"))
 
 func _on_hide_banner_button_pressed():
 	Bridge.advertisement.hide_banner()
