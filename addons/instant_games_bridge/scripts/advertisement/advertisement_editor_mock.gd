@@ -37,7 +37,7 @@ func _init():
 func set_minimum_delay_between_interstitial(value):
 	_minimum_delay_between_interstitial = value
 
-func show_banner(options):
+func show_banner(options = null):
 	_set_banner_state(Bridge.BannerState.LOADING)
 	_set_banner_state(Bridge.BannerState.SHOWN)
 

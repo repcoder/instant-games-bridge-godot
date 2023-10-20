@@ -33,7 +33,7 @@ var _js_on_rewarded_state_changed = JavaScript.create_callback(self, "_on_reward
 func set_minimum_delay_between_interstitial(value):
 	_js_advertisement.setMinimumDelayBetweenInterstitial(value)
 
-func show_banner(options):
+func show_banner(options = null):
 	var js_options = JavaScript.create_object("Object")
 	js_options.containerId = "banner-container"
 	
