@@ -129,7 +129,7 @@ func _on_js_get_then(args):
 func _on_js_get_catch(args):
 	_is_getting = false
 	if _get_callback != null:
-		_get_callback.ccall_func(false, null)
+		_get_callback.call_func(false, null)
 
 func _on_js_set_then(args):
 	_is_setting = false

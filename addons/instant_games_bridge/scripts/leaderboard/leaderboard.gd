@@ -152,7 +152,19 @@ func _on_js_get_entries_then(args):
 			TYPE_OBJECT:
 				var array = []
 				for i in range(data.length):
-					array.append(data[i])
+					var js_entry = data[i]
+					var entry = {
+						"id": js_entry.id,
+						"score": js_entry.score,
+						"rank": js_entry.rank,
+						"name": js_entry.name,
+						"photos": []
+					}
+					
+					for j in range(js_entry.photos.length):
+						entry.photos.append(js_entry.photos[j])
+					
+					array.append(entry)
 				_get_entries_callback.call_func(true, array)
 			_:
 				_get_entries_callback.call_func(false, [])
