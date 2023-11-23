@@ -120,7 +120,7 @@ func _on_js_get_then(args):
 				array.append(data[i])
 			_get_callback.call_func(true, array)
 		_:
-			_get_callback.call_func(false, data)
+			_get_callback.call_func(true, data)
 
 func _on_js_get_catch(args):
 	_is_getting = false
