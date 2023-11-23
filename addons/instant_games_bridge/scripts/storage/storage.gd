@@ -114,17 +114,13 @@ func _on_js_get_then(args):
 	var data = args[0]
 	var data_type = typeof(data)
 	match data_type:
-		TYPE_NIL:
-			_get_callback.call_func(true, null)
 		TYPE_OBJECT:
 			var array = []
 			for i in range(data.length):
 				array.append(data[i])
 			_get_callback.call_func(true, array)
-		TYPE_STRING:
-			_get_callback.call_func(true, data)
 		_:
-			_get_callback.call_func(false, null)
+			_get_callback.call_func(false, data)
 
 func _on_js_get_catch(args):
 	_is_getting = false
