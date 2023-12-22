@@ -120,6 +120,7 @@ var storage setget , _storage_getter
 var advertisement setget , _advertisement_getter
 var social setget , _social_getter
 var leaderboard setget , _leaderboard_getter
+var payments setget , _payments_getter
 
 
 func _platform_getter():
@@ -146,6 +147,9 @@ func _social_getter():
 func _leaderboard_getter():
 	return _leaderboard
 
+func _payments_getter():
+	return _payments
+
 var _platform = null
 var _device = null
 var _player = null
@@ -154,6 +158,7 @@ var _storage = null
 var _advertisement = null
 var _social = null
 var _leaderboard = null
+var _payments = null
 
 
 func _ready():
@@ -167,6 +172,7 @@ func _ready():
 		_advertisement = load("res://addons/instant_games_bridge/scripts/advertisement/advertisement.gd").new(js_bridge.advertisement)
 		_social = load("res://addons/instant_games_bridge/scripts/social/social.gd").new(js_bridge.social)
 		_leaderboard = load("res://addons/instant_games_bridge/scripts/leaderboard/leaderboard.gd").new(js_bridge.leaderboard)
+		_payments = load("res://addons/instant_games_bridge/scripts/payments/payments.gd").new(js_bridge.payments)
 	else:
 		_platform = load("res://addons/instant_games_bridge/scripts/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/instant_games_bridge/scripts/device/device_editor_mock.gd").new()
@@ -176,3 +182,4 @@ func _ready():
 		_advertisement = load("res://addons/instant_games_bridge/scripts/advertisement/advertisement_editor_mock.gd").new()
 		_social = load("res://addons/instant_games_bridge/scripts/social/social_editor_mock.gd").new()
 		_leaderboard = load("res://addons/instant_games_bridge/scripts/leaderboard/leaderboard_editor_mock.gd").new()
+		_payments = load("res://addons/instant_games_bridge/scripts/payments/payments_editor_mock.gd").new()
