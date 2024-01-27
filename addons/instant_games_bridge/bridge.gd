@@ -111,6 +111,11 @@ class ShowNativePopupVkOptions:
 		self.user_result = user_result
 		self.global = global
 
+class RemoteConfigGetYandexOptions:
+	var client_features
+	func _init(client_features):
+		self.client_features = client_features
+
 
 var platform setget , _platform_getter
 var device setget , _device_getter
@@ -121,6 +126,7 @@ var advertisement setget , _advertisement_getter
 var social setget , _social_getter
 var leaderboard setget , _leaderboard_getter
 var payments setget , _payments_getter
+var remote_config setget , _remote_config_getter
 
 
 func _platform_getter():
@@ -150,6 +156,9 @@ func _leaderboard_getter():
 func _payments_getter():
 	return _payments
 
+func _remote_config_getter():
+	return _remote_config
+
 var _platform = null
 var _device = null
 var _player = null
@@ -159,6 +168,7 @@ var _advertisement = null
 var _social = null
 var _leaderboard = null
 var _payments = null
+var _remote_config = null
 
 
 func _ready():
@@ -173,6 +183,7 @@ func _ready():
 		_social = load("res://addons/instant_games_bridge/scripts/social/social.gd").new(js_bridge.social)
 		_leaderboard = load("res://addons/instant_games_bridge/scripts/leaderboard/leaderboard.gd").new(js_bridge.leaderboard)
 		_payments = load("res://addons/instant_games_bridge/scripts/payments/payments.gd").new(js_bridge.payments)
+		_remote_config = load("res://addons/instant_games_bridge/scripts/remote_config/remote_config.gd").new(js_bridge.remoteConfig)
 	else:
 		_platform = load("res://addons/instant_games_bridge/scripts/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/instant_games_bridge/scripts/device/device_editor_mock.gd").new()
@@ -183,3 +194,4 @@ func _ready():
 		_social = load("res://addons/instant_games_bridge/scripts/social/social_editor_mock.gd").new()
 		_leaderboard = load("res://addons/instant_games_bridge/scripts/leaderboard/leaderboard_editor_mock.gd").new()
 		_payments = load("res://addons/instant_games_bridge/scripts/payments/payments_editor_mock.gd").new()
+		_remote_config = load("res://addons/instant_games_bridge/scripts/remote_config/remote_config_editor_mock.gd").new()
