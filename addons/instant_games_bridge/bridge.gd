@@ -19,6 +19,7 @@ const PlatformId = {
 	CRAZY_GAMES = "crazy_games",
 	ABSOLUTE_GAMES = "absolute_games",
 	GAME_DISTRIBUTION = "game_distribution",
+	VK_PLAY = "vk_play",
 	MOCK = "mock"
 }
 

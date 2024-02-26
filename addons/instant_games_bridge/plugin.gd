@@ -6,9 +6,11 @@ const SINGLETON_PATH = "res://addons/instant_games_bridge/bridge.gd"
 const POSTPROCESSOR_PLUGIN_PATH = "res://addons/instant_games_bridge/postprocessor.gd"
 const SETTINGS_PATH = "addons/instant_games_bridge/general/"
 const SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY = "game_distribution_game_id"
+const SETTINGS_VK_PLAY_GAME_ID_KEY = "vk_play_game_id"
 
 func _enter_tree():
 	_add_project_settings(SETTINGS_PATH + SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY, TYPE_STRING, "")
+	_add_project_settings(SETTINGS_PATH + SETTINGS_VK_PLAY_GAME_ID_KEY, TYPE_STRING, "")
 	add_autoload_singleton(SINGLETON_NAME, SINGLETON_PATH)
 	add_export_plugin(load(POSTPROCESSOR_PLUGIN_PATH).new())
 

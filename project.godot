@@ -21,6 +21,7 @@ _global_script_class_icons={
 [addons]
 
 instant_games_bridge/general/game_distribution_game_id=""
+instant_games_bridge/general/vk_play_game_id=""
 
 [application]
 
