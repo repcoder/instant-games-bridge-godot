@@ -1,7 +1,7 @@
-var id setget , _id_getter
-var payload setget , _payload_getter
-var language setget , _language_getter
-var tld setget , _tld_getter
+var id: get = _id_getter
+var payload: get = _payload_getter
+var language: get = _language_getter
+var tld: get = _tld_getter
 
 
 var _js_platform = null
@@ -17,7 +17,7 @@ func _language_getter():
 
 func _tld_getter():
 	return _js_platform.tld
-	
+
 func _init(js_platform):
 	_js_platform = js_platform
 

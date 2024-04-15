@@ -1,4 +1,4 @@
-var is_supported setget , _is_supported_getter
+var is_supported: get = _is_supported_getter
 
 
 func _is_supported_getter():
@@ -8,5 +8,5 @@ func _is_supported_getter():
 func get(options = null, callback = null):
 	if callback == null:
 		return
-	
+
 	callback.call_func(false, null)

@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 
 const SINGLETON_NAME = "Bridge"
@@ -18,9 +18,9 @@ func _exit_tree():
 	remove_autoload_singleton(SINGLETON_NAME)
 
 func _add_project_settings(name, type, default_value, hint = PROPERTY_HINT_NONE, hint_string = ""):
-	if ProjectSettings.has_setting(name): 
+	if ProjectSettings.has_setting(name):
 		return
-	
+
 	ProjectSettings.set_setting(name, default_value)
 	ProjectSettings.add_property_info({
 		"name": name,
